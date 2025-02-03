@@ -96,7 +96,7 @@
 
     /* Style untuk judul pada halaman utama dan modal */
     h1 {
-      color: #e91e63;
+      color: #e91ea5;
       font-family: 'Playfair Display', serif;
       margin-bottom: 1.5rem;
     }
@@ -170,13 +170,14 @@
     <input type="text" id="nameInput" placeholder="Nama Kamu" />
     <br>
     <button onclick="setName()">Lanjutkan</button>
+    <g class="note">&copy; A.H 5.1 SDN BHD</g>
   </div>
 
   <!-- Halaman Utama -->
   <div class="container" id="mainContainer" style="display: none;">
     <h1 id="greeting"></h1>
     <div class="message-box">
-      <p>Sebenarnya sudah dari dulu saya suka sama kamu tapi tidak saya publikasikan karena pada masa itu saya tidak tahu cara mendekati perempuan, apalagi perempuan yang saya suka. Karena sekarang saya sedikit tahu caranya, saya mau ngomong sesuatu sebelum terlambat: mahukah kamu jadi pacarku? (Dikarenakan teks di atas kurang lengkap, untuk selengkapnya bisa dibicarakan melalui chat atau bertemu langsung.)</p>
+      <p>Sebenarnya sudah dari dulu saya suka sama kamu tapi tidak saya publikasikan karena pada saat itu saya tidak tahu cara mendekati perempuan yang saya suka. Karena sekarang saya sedikit tahu caranya berkat kawan dan AI yang telah membantu saya, saya mau ngomong sesuatu sebelum terlambat: <strong>mahukah kamu jadi pacarku?</strong> (Dikarenakan teks di atas kurang lengkap, untuk selengkapnya bisa dibicarakan melalui chat atau bertemu langsung.)maaf jika caraku menembak tidak seperti orang lain </p>
     </div>
     <button onclick="showModal('modal1')">Selanjutnya</button>
     <p class="note">&copy; A.H 5.1 SDN BHD</p>
@@ -185,10 +186,11 @@
   <!-- Modal Pertama -->
   <div class="modal" id="modal1">
     <div class="modal-content">
-      <p>Silakan klik pilihan yang sesuai dengan kemauanmu, jangan bohong😉. Kamu akan diarahkan ke WhatsApp saya untuk mengirimkan jawaban. Saya janji jika kamu pilih ya, saya akan menghapus sticker JMK dan menggantinya dengan yang lebih baik dan enak dilihat.</p>
+      <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong😉.</p>
       <button onclick="showModal('modal2')">Ya, saya mau😆</button>
       <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau😔</button>
       <button onclick="redirectWA('sudah-pacar')">Maaf, saya sudah punya pacar😭</button>
+      <button onclick="showModal('modal5')">klarifikasi</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
@@ -196,10 +198,22 @@
   <!-- Modal Kedua -->
   <div class="modal" id="modal2">
     <div class="modal-content">
-      <p>Apakah kamu ingin melanjutkan hubungan ini hingga kita siap secara finansial, mental, dan umur untuk menikah?</p>
+      <p>Apakah kamu ingin melanjutkan hubungan ini hingga kita siap secara umur,mental,dan yang terpenting finansial untuk menikah?</p>
       <button onclick="redirectWA('ya-lanjut')">Ya👍</button>
       <button onclick="redirectWA('tidak-lanjut')">Tidak👎</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
+    </div>
+  </div>
+  <div class="modal" id="modal5">
+    <div class="modal-content">
+      <p>kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu,membuatmu tidak nyaman,mengirim kamu sticker j*k di whatsapp saya minta maaf sebesar besarnya saya janji tak akan saya ulangi lagi.saya harap setelah membaca ini kamu mau memaafkan saya</p>
+      <button onclick="showModal('modal6')">kelebihan dan kekurangan</button>
+    </div>
+  </div>
+  <div class="modal" id="modal6">
+    <div class="modal-content">
+      <p>saya tidak tau,mungkin kamu tau apa kekurangan dan kelebihan ku</p>
+      <p>jika kamu suatu saat berubah pikiran disaat sudah tidak bertemu lagi dan kamu kehilangan nomor saya kamu bisa mengirim pesan lewat email/gmail saya (saya harap kamu tau caranya) berikut gmail saya <strong>rafaggalang068@gmail.com</strong>email tersebut saya gunakan sampai kapanpun maybe until i die </p>
     </div>
   </div>
 
@@ -231,12 +245,12 @@
         'tidak-lanjut': 'Ya, saya mau (tidak)'
       };
 
-      const phoneNumber = '6285876658074'; // Ganti dengan nomor WhatsApp Anda
+      const phoneNumber = '6285876658074'; 
       const message = encodeURIComponent(messages[answer]);
       window.location.href = `https://wa.me/${phoneNumber}?text=${message}`;
     }
 
-    // Tutup modal saat klik di luar area modal
+    
     window.onclick = function(event) {
       if (event.target.className === 'modal') {
         event.target.style.display = 'none';
