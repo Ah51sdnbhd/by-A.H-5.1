@@ -5,28 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Penentuan Akhir</title>
   <style>
+    /* Semua style sebelumnya tetap sama */
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes popIn {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     body {
@@ -167,9 +156,9 @@
   <!-- Modal Konfirmasi Standar Internet -->
   <div class="modal" id="confirmationModal">
     <div class="modal-content">
-      <p>Apakah kamu orang yang ikut standar tiktok?.jika kamu pilih "iya" kamu tidak diperbolehkan membuka halaman berikutnya</p>
-      <button onclick="confirmAccess(true)">Iya</button>
-      <button onclick="confirmAccess(false)">Tidak</button>
+      <p>Apakah kamu orang yang ikut standar internet?</p>
+      <button onclick="handleConfirmation(true)">Iya</button>
+      <button onclick="handleConfirmation(false)">Tidak</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
@@ -187,10 +176,10 @@
   <div class="modal" id="modal1">
     <div class="modal-content">
       <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong😉.</p>
+      <button onclick="showModal('modal5')">klarifikasi</button>
       <button onclick="showModal('modal2')">Ya, saya mau😆</button>
       <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau😔</button>
       <button onclick="redirectWA('sudah-pacar')">Maaf, saya sudah punya pacar😭</button>
-      <button onclick="showModal('modal5')">klarifikasi</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
@@ -224,20 +213,27 @@
 
     function setName() {
       const name = document.getElementById('nameInput').value.trim();
-      if (name !== "") {
+      if (name) {
         localStorage.setItem('userName', name);
         document.getElementById('nameContainer').style.display = 'none';
         document.getElementById('confirmationModal').style.display = 'flex';
       }
     }
 
-    function confirmAccess(isStandard) {
-      if (isStandard) {
-        window.close();
+    function handleConfirmation(isStandardUser) {
+      if (isStandardUser) {
+        // Blokir akses dan tutup window
+        window.location.href = 'about:blank';
+        setTimeout(() => {
+          window.close();
+        }, 100);
+        
+        // Hentikan semua eksekusi script
+        throw new Error('Access denied');
       } else {
         document.getElementById('confirmationModal').style.display = 'none';
         document.getElementById('mainContainer').style.display = 'block';
-        document.getElementById('greeting').innerHTML = ` Hai, ${localStorage.getItem('userName')} `;
+        document.getElementById('greeting').textContent = `Hai, ${localStorage.getItem('userName')}`;
       }
     }
 
@@ -246,23 +242,23 @@
     }
 
     function redirectWA(answer) {
-      const messages = {
+      const responses = {
         'tidak-mau': 'Tidak, saya tidak mau',
         'sudah-pacar': 'Maaf saya sudah punya pacar',
         'ya-lanjut': 'Ya, saya mau (ya)',
         'tidak-lanjut': 'Ya, saya mau (tidak)'
       };
 
-      const phoneNumber = '6285876658074'; 
-      const message = encodeURIComponent(messages[answer]);
-      window.location.href = `https://wa.me/${phoneNumber}?text=${message}`;
+      const waNumber = '6285876658074';
+      const message = encodeURIComponent(responses[answer]);
+      window.location.href = `https://wa.me/${waNumber}?text=${message}`;
     }
 
     window.onclick = function(event) {
-      if (event.target.className === 'modal' && event.target.id !== 'confirmationModal') {
+      if (event.target.classList.contains('modal') && event.target.id !== 'confirmationModal') {
         event.target.style.display = 'none';
       }
-    }
+    };
   </script>
 </body>
 </html>
