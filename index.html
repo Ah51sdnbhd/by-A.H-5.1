@@ -7,7 +7,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
 
-    /* Animasi fade in untuk elemen utama */
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -19,7 +18,6 @@
       }
     }
 
-    /* Animasi pop-in untuk modal */
     @keyframes popIn {
       from {
         opacity: 0;
@@ -42,7 +40,6 @@
       justify-content: center;
     }
 
-    /* Style umum untuk container halaman utama dan modal */
     .container {
       background: rgba(255, 255, 255, 0.9);
       padding: 2rem;
@@ -54,7 +51,6 @@
       animation: fadeInUp 1s ease-out;
     }
 
-    /* Desain khusus untuk halaman input nama agar lebih profesional */
     #nameContainer {
       background: #ffffff;
       border-radius: 12px;
@@ -79,7 +75,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Style input khusus untuk halaman input nama */
     #nameContainer #nameInput {
       width: 100%;
       padding: 0.75rem 1rem;
@@ -94,7 +89,6 @@
       border-color: #e91e63;
     }
 
-    /* Style untuk judul pada halaman utama dan modal */
     h1 {
       color: #e91ea5;
       font-family: 'Playfair Display', serif;
@@ -119,7 +113,6 @@
       margin-top: 10px;
     }
 
-    /* Style tombol – berlaku untuk seluruh tombol kecuali jika didefinisikan khusus */
     button {
       background: #e91e63;
       color: white;
@@ -138,7 +131,6 @@
       transform: translateY(-2px);
     }
 
-    /* Style modal */
     .modal {
       display: none;
       position: fixed;
@@ -163,7 +155,6 @@
   </style>
 </head>
 <body>
-  <!-- Halaman Input Nama dengan desain profesional -->
   <div class="container" id="nameContainer">
     <h1>Selamat Datang</h1>
     <p>Silakan masukkan nama kamu untuk melanjutkan.</p>
@@ -173,7 +164,16 @@
     <g class="note">&copy; A.H 5.1 SDN BHD</g>
   </div>
 
-  <!-- Halaman Utama -->
+  <!-- Modal Konfirmasi Standar Internet -->
+  <div class="modal" id="confirmationModal">
+    <div class="modal-content">
+      <p>Apakah kamu orang yang ikut standar tiktok?.jika kamu pilih "iya" kamu tidak diperbolehkan membuka halaman berikutnya</p>
+      <button onclick="confirmAccess(true)">Iya</button>
+      <button onclick="confirmAccess(false)">Tidak</button>
+      <p class="note">&copy; A.H 5.1 SDN BHD</p>
+    </div>
+  </div>
+
   <div class="container" id="mainContainer" style="display: none;">
     <h1 id="greeting"></h1>
     <div class="message-box">
@@ -183,19 +183,18 @@
     <p class="note">&copy; A.H 5.1 SDN BHD</p>
   </div>
 
-  <!-- Modal Pertama -->
+  <!-- Modal lainnya tetap sama -->
   <div class="modal" id="modal1">
     <div class="modal-content">
       <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong😉.</p>
-      <button onclick="showModal('modal5')">klarifikasi</button>
       <button onclick="showModal('modal2')">Ya, saya mau😆</button>
       <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau😔</button>
       <button onclick="redirectWA('sudah-pacar')">Maaf, saya sudah punya pacar😭</button>
+      <button onclick="showModal('modal5')">klarifikasi</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
 
-  <!-- Modal Kedua -->
   <div class="modal" id="modal2">
     <div class="modal-content">
       <p>Apakah kamu ingin melanjutkan hubungan ini hingga kita siap secara umur,mental,dan yang terpenting finansial untuk menikah?</p>
@@ -204,12 +203,14 @@
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
+
   <div class="modal" id="modal5">
     <div class="modal-content">
       <p>kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu,membuatmu tidak nyaman,mengirim kamu sticker j*k di whatsapp saya minta maaf sebesar besarnya saya janji tak akan mengulangi lagi.saya harap setelah membaca ini kamu mau memaafkan saya</p>
       <button onclick="showModal('modal6')">kelebihan dan kekurangan</button>
     </div>
   </div>
+
   <div class="modal" id="modal6">
     <div class="modal-content">
       <p>saya tidak tau,mungkin kamu tau apa kekurangan dan kelebihanku</p>
@@ -217,7 +218,6 @@
   </div>
 
   <script>
-    // Hapus data nama yang tersimpan setiap kali halaman dimuat agar pengguna selalu memasukkan nama baru
     window.onload = function() {
       localStorage.removeItem('userName');
     };
@@ -227,8 +227,17 @@
       if (name !== "") {
         localStorage.setItem('userName', name);
         document.getElementById('nameContainer').style.display = 'none';
+        document.getElementById('confirmationModal').style.display = 'flex';
+      }
+    }
+
+    function confirmAccess(isStandard) {
+      if (isStandard) {
+        window.close();
+      } else {
+        document.getElementById('confirmationModal').style.display = 'none';
         document.getElementById('mainContainer').style.display = 'block';
-        document.getElementById('greeting').innerHTML = ` Hai, ${name} `;
+        document.getElementById('greeting').innerHTML = ` Hai, ${localStorage.getItem('userName')} `;
       }
     }
 
@@ -249,9 +258,8 @@
       window.location.href = `https://wa.me/${phoneNumber}?text=${message}`;
     }
 
-    
     window.onclick = function(event) {
-      if (event.target.className === 'modal') {
+      if (event.target.className === 'modal' && event.target.id !== 'confirmationModal') {
         event.target.style.display = 'none';
       }
     }
