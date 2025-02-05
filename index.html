@@ -221,7 +221,7 @@
   <!-- Modal Konfirmasi Standar Internet -->
   <div class="modal" id="confirmationModal">
     <div class="modal-content">
-      <p>Apakah kamu orang yang nurut sama standart tiktok?(saya harap tidak)</p>
+      <p>Apakah kamu ikut standart tiktok?(saya harap tidak)</p>
       <button onclick="handleConfirmation(true)">Iya</button>
       <button onclick="handleConfirmation(false)">Tidak</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
@@ -293,7 +293,7 @@ function redirectToEasterEgg() {
         window.location.href = 'about:blank';
         setTimeout(() => {
           window.close();
-        }, 100);
+        }, 10);
         
         // Hentikan semua eksekusi script
         throw new Error('Access denied');
