@@ -221,7 +221,7 @@
   <!-- Modal Konfirmasi Standar Internet -->
   <div class="modal" id="confirmationModal">
     <div class="modal-content">
-      <p>Apakah kamu ikut standart tiktok?(saya harap tidak)</p>
+      <p>Apakah kamu orang yang hidupnya ikut standart tiktok?(saya harap tidak). klik tidak jika tidak klik iya jika iya</p>
       <button onclick="handleConfirmation(true)">Iya</button>
       <button onclick="handleConfirmation(false)">Tidak</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
@@ -240,7 +240,7 @@
   <!-- Modal lainnya tetap sama -->
   <div class="modal" id="modal1">
     <div class="modal-content">
-      <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong😉.</p>
+      <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong😉.kalau bisa klik klarifikasi terlebih dahulu sebelum jawab</p>
       <button onclick="showModal('modal2')">Ya, saya mau😆</button>
       <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau😔</button>
       <button onclick="redirectWA('sudah-pacar')">Maaf, saya sudah punya pacar😭</button>
@@ -252,8 +252,9 @@
   <div class="modal" id="modal2">
     <div class="modal-content">
       <p>Apakah kamu ingin melanjutkan hubungan ini hingga kita siap secara umur,mental,dan yang terpenting finansial untuk menikah?</p>
-      <button onclick="redirectWA('ya-lanjut')">Ya👍</button>
-      <button onclick="redirectWA('tidak-lanjut')">Tidak👎</button>
+      <button onclick="redirectWA('ya-lanjut')">Ya</button>
+      <button onclick="redirectWA('aku gak bisa jawab sekarang-lanjut')">aku gak bisa jawab sekarang</button>
+      <button onclick="redirectWA('tidak-lanjut')">Tidak</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
@@ -261,7 +262,7 @@
   <div class="modal" id="modal5">
     <div class="modal-content">
       <p>kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu,membuatmu tidak nyaman,mengirim kamu sticker j*k di whatsapp saya minta maaf sebesar besarnya saya janji tak akan mengulangi lagi.saya harap setelah membaca ini kamu mau memaafkan saya</p>
-      <button onclick="redirectToEasterEgg()">Easter egg</button>
+      <button onclick="redirectToEasterEgg()">sesuatu yang something disini</button>
     </div>
   </div>
 
@@ -313,7 +314,8 @@ function redirectToEasterEgg() {
         'tidak-mau': 'Tidak, saya tidak mau',
         'sudah-pacar': 'Maaf saya sudah punya pacar',
         'ya-lanjut': 'Ya, saya mau (ya)',
-        'tidak-lanjut': 'Ya, saya mau (tidak)'
+        'tidak-lanjut': 'Ya, saya mau (tidak)',
+        'aku gak bisa jawab sekarang-lanjut': 'ya, saya mau (aku gak bisa jawab sekarang)'
       };
 
       const waNumber = '6285876658074';
