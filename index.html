@@ -259,13 +259,12 @@
   <div class="modal" id="modal5">
     <div class="modal-content">
       <p>kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu,membuatmu tidak nyaman,mengirim kamu sticker j*k di whatsapp saya minta maaf sebesar besarnya saya janji tak akan mengulangi lagi.saya harap setelah membaca ini kamu mau memaafkan saya</p>
-      <button onclick="showModal('modal6')">Easter egg</button>
+      <button onclick="redirectToEasterEgg()">Easter egg</button>
     </div>
   </div>
 
   <div class="modal" id="modal6">
     <div class="modal-content">
-      window.location.href = 'https://ah51sdnbhd.github.io/project-x2391/'
     </div>
   </div>
 
@@ -281,6 +280,10 @@
         document.getElementById('nameContainer').style.display = 'none';
         document.getElementById('confirmationModal').style.display = 'flex';
       }
+
+function redirectToEasterEgg() {
+    window.open('https://ah51sdnbhd.github.io/project-x2391/', '_blank');
+  }
     }
 
     function handleConfirmation(isStandardUser) {
