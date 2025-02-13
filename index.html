@@ -290,7 +290,7 @@
   <div class="container" id="mainContainer" style="display: none;">
     <h1 id="greeting"></h1>
     <div class="message-box">
-      <p>Sebenarnya sudah dari dulu saya suka sama kamu tapi tidak saya publikasikan karena pada saat itu saya tidak tahu cara mendekati perempuan yang saya suka. Karena sekarang saya sedikit tahu caranya berkat kawan dan AI yang telah membantu saya, saya mau ngomong sesuatu sebelum terlambat: <strong>mahukah kamu jadi pacarku?</strong> (karena teks di atas kurang lengkap, untuk selengkapnya bisa dibicarakan melalui chat atau bertemu langsung.) Maaf jika caraku menembak tidak sebagus orang lain.</p>
+      <p>Sebenarnya sudah dari dulu saya suka sama kamu tapi tidak saya publikasikan karena pada saat itu saya tidak tahu cara mendekati perempuan yang saya suka. Karena sekarang saya sedikit tahu caranya berkat kawan dan AI yang telah membantu saya, saya mau ngomong sesuatu sebelum terlambat: <strong>mahukah kamu jadi pacarku?</strong> Maaf jika caraku menembak tidak sebagus orang lain🙏.</p>
     </div>
     <button onclick="showModal('modal1')">Selanjutnya</button>
     <p class="note">&copy; A.H 5.1 SDN BHD</p>
@@ -300,9 +300,9 @@
   <div class="modal" id="modal1">
     <div class="modal-content">
       <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong 😉. Kalau bisa klik "informasi" terlebih dahulu sebelum jawab.</p>
-      <button onclick="showModal('modal2')">Ya, saya mau 😆</button>
-      <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau 😔</button>
-      <button onclick="redirectWA('sudah-pacar')">Maaf, saya sudah punya pacar 😭</button>
+      <button onclick="showModal('modal2')">Ya, saya mau </button>
+      <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau </button>
+      <button onclick="redirectWA('sudah-pacar')">Maaf, saya sudah punya pacar </button>
       <button onclick="showModal('modal5')">informasi</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
@@ -373,7 +373,7 @@
               <h1 style="color: #5d0e1f; margin-bottom: 1rem;">
                 Yah, sayang sekali kamu tidak diperbolehkan untuk membuka halaman selanjutnya 😔
               </h1>
-              <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 5 detik...</p>
+              <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 3 detik...</p>
             </div>
           </div>
         `;
@@ -384,7 +384,7 @@
         setTimeout(() => {
           window.location.href = "about:blank";
           window.close();
-        }, 5000);
+        }, 3000);
         
       } else {
         document.getElementById('confirmationModal').style.display = 'none';
