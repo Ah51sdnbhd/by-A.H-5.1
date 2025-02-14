@@ -277,26 +277,28 @@
     <button onclick="setName()">Lanjutkan</button>
   </div>
 
-  <!-- Modal Konfirmasi Standar Internet -->
+  <!-- Modal Konfirmasi Standar TikTok -->
   <div class="modal" id="confirmationModal">
     <div class="modal-content">
-      <p>Apakah kamu hidupnya diatur oleh standar tiktok? Klik <strong>Iya</strong> jika ya dan <strong>Tidak</strong> jika tidak.</p>
-      <button onclick="showMantanModal()">Iya</button>
+      <p>Apakah kamu hidupnya diatur oleh standar tiktok?<br>
+         Klik <strong>Iya</strong> jika ya dan <strong>Tidak</strong> jika tidak.
+      </p>
+      <button onclick="handleConfirmation(true)">Iya</button>
       <button onclick="handleConfirmation(false)">Tidak</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
 
-  <!-- Modal Pertanyaan Mantan -->
-  <div class="modal" id="mantanModal">
+  <!-- Modal Pertanyaan Popup Kedua -->
+  <div class="modal" id="exConfirmationModal">
     <div class="modal-content">
       <p>Apakah kamu masih suka dengan mantanmu?</p>
-      <button onclick="handleMantan(true)">Iya</button>
-      <button onclick="handleMantan(false)">Tidak</button>
+      <button onclick="handleExConfirmation(true)">tidak</button>
+      <button onclick="handleExConfirmation(false)">iya</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
-  
+
   <div class="container" id="mainContainer" style="display: none;">
     <h1 id="greeting"></h1>
     <div class="message-box">
@@ -329,7 +331,7 @@
 
   <div class="modal" id="modal5">
     <div class="modal-content">
-      <p>Kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu, membuatmu tidak nyaman, mengirim kamu sticker j*k di WhatsApp. Saya minta maaf sebesar-besarnya dan janji tidak akan mengulangi lagi. Saya harap setelah membaca ini kamu mau memaafkan saya.satu lagi,semisal jika kamu menerima saya mungkin cara ku berpacaran sedikit berbeda dengan orang yang suka kekamu dulu.karena apa?,karena saya belum ada pengalaman melakukan hal semacam ini sebelumnya bisa dibilang ini baru pertama kalinya tapi saya akan melakukan sebisa mungkin</p>
+      <p>Kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu, membuatmu tidak nyaman, mengirim kamu sticker j*k di WhatsApp. Saya minta maaf sebesar-besarnya dan janji tidak akan mengulangi lagi. Saya harap setelah membaca ini kamu mau memaafkan saya. Satu lagi, misal jika kamu menerima saya mungkin cara ku berpacaran sedikit berbeda dengan orang yang pernah menyukaimu dulu. Karena saya belum ada pengalaman melakukan hal semacam ini sebelumnya, bisa dibilang ini baru pertama kalinya, tapi saya akan melakukan sebisa mungkin.</p>
       <button onclick="redirectToEasterEgg()">nothing</button>
     </div>
   </div>
@@ -339,7 +341,7 @@
     </div>
   </div>
 
- <script>
+  <script>
     function redirectToEasterEgg() {
       window.open('https://ah51sdnbhd.github.io/project-x2391/', '_blank');
     }
@@ -357,63 +359,66 @@
       }
     }
 
-    // Jika pengguna klik tombol "Tidak" pada modal konfirmasi pertama,
-    // langsung tampilkan halaman utama.
-    function handleConfirmation(isStandardUser) {
-      if (!isStandardUser) {
+    // Fungsi untuk modal konfirmasi pertama
+    // Parameter: true (Iya) atau false (Tidak)
+    function handleConfirmation(isTikTokStandard) {
+      if (isTikTokStandard) {
+        // Jika pengguna klik "Iya" pada modal pertama, tampilkan halaman exit
+        const exitHTML = `
+          <div style="
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff5f5, #ffe3e3);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Merriweather', serif;
+            text-align: center;
+            padding: 20px;
+          ">
+            <div style="
+              background: rgba(255,255,255,0.95);
+              padding: 2rem;
+              border-radius: 20px;
+              box-shadow: 0 10px 30px rgba(231, 76, 132, 0.1);
+              max-width: 600px;
+            ">
+              <h1 style="color: #5d0e1f; margin-bottom: 1rem;">
+                Yah, sayang sekali kamu tidak memenuhi syarat untuk membuka halaman selanjutnya 😔
+              </h1>
+              <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 5 detik...</p>
+            </div>
+          </div>
+        `;
+        
+        document.body.innerHTML = exitHTML;
+        setTimeout(() => {
+          window.location.href = "about:blank";
+          window.close();
+        }, 5000);
+      } else {
+        // Jika pengguna klik "Tidak" pada modal pertama,
+        // sembunyikan modal pertama dan tampilkan modal pertanyaan kedua
         document.getElementById('confirmationModal').style.display = 'none';
+        document.getElementById('exConfirmationModal').style.display = 'flex';
+      }
+    }
+
+    // Fungsi untuk modal pertanyaan kedua
+    // Parameter: true (Iya) atau false (Tidak)
+    function handleExConfirmation(likesEx) {
+      // Sembunyikan modal kedua
+      document.getElementById('exConfirmationModal').style.display = 'none';
+      if (likesEx) {
+        // Jika pengguna klik "Iya" pada modal kedua,
+        // buka halaman utama (bisa kamu ubah tampilan atau tulisannya nantinya)
         document.getElementById('mainContainer').style.display = 'block';
         document.getElementById('greeting').textContent = `Hai, ${localStorage.getItem('userName')}`;
-      }
-    }
-
-    // Tampilkan modal pertanyaan mantan ketika pengguna klik "Iya" di modal pertama.
-    function showMantanModal() {
-      document.getElementById('confirmationModal').style.display = 'none';
-      document.getElementById('mantanModal').style.display = 'flex';
-    }
-
-    // Tangani jawaban dari modal pertanyaan mantan.
-    function handleMantan(answer) {
-      // Sembunyikan modal pertanyaan mantan.
-      document.getElementById('mantanModal').style.display = 'none';
-
-      let exitHTML = '';
-
-      if (answer) {
-        // Jika pengguna klik "Iya" pada modal mantan,
-        // tampilkan halaman exit dengan teks yang berbeda (placeholder bisa diganti nanti).
-        exitHTML = `
-          <div style="
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh;
-            background: linear-gradient(135deg, #fff5f5, #ffe3e3);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            font-family: 'Merriweather', serif;
-            text-align: center;
-            padding: 20px;
-          ">
-            <div style="
-              background: rgba(255,255,255,0.95);
-              padding: 2rem;
-              border-radius: 20px;
-              box-shadow: 0 10px 30px rgba(231, 76, 132, 0.1);
-              max-width: 600px;
-            ">
-              <h1 style="color: #5d0e1f; margin-bottom: 1rem;">
-                [Teks khusus untuk pilihan Iya pada pertanyaan mantan]
-              </h1>
-              <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 5 detik...</p>
-            </div>
-          </div>
-        `;
       } else {
-        // Jika pengguna klik "Tidak" pada modal mantan,
-        // halaman utama tidak akan terbuka (tampilkan exit page dengan teks placeholder).
-        exitHTML = `
+        // Jika pengguna klik "Tidak" pada modal kedua,
+        // tampilkan halaman exit dengan pesan berbeda (placeholder)
+        const exitHTML = `
           <div style="
             display: flex; 
             align-items: center; 
@@ -434,21 +439,19 @@
               max-width: 600px;
             ">
               <h1 style="color: #5d0e1f; margin-bottom: 1rem;">
-                [Teks khusus untuk pilihan Tidak pada pertanyaan mantan]
+                Maaf, kamu tidak memenuhi syarat untuk melanjutkan ke halaman berikutnya 😔
               </h1>
               <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 5 detik...</p>
             </div>
           </div>
         `;
+        
+        document.body.innerHTML = exitHTML;
+        setTimeout(() => {
+          window.location.href = "about:blank";
+          window.close();
+        }, 5000);
       }
-
-      document.body.innerHTML = exitHTML;
-
-      // Set timeout untuk keluar setelah 5 detik.
-      setTimeout(() => {
-        window.location.href = "about:blank";
-        window.close();
-      }, 5000);
     }
 
     function showModal(modalId) {
