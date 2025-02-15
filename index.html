@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kuis berhadiah keliling luar negri</title>
+  <title>how to repair a fan </title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
 
@@ -184,6 +184,11 @@
       color: #745159;
       margin-top: 1.5rem;
     }
+    .note1 {
+      font-size: 0.9rem;
+      color: #000000;
+      margin-top: 1.5rem;
+    }
 
     button {
       background: linear-gradient(135deg, #e74c84 0%, #d8316b 100%);
@@ -292,14 +297,14 @@
   <!-- Modal Pertanyaan Popup Kedua -->
   <div class="modal" id="exConfirmationModal">
     <div class="modal-content">
-      <p>Apakah kamu masih suka dengan mantanmu?</p>
-      <button onclick="handleExConfirmation(true)">tidak</button>
-      <button onclick="handleExConfirmation(false)">iya</button>
+      <p>Apakah sekarang kamu sudah punya pacar?</p>
+      <button onclick="handleExConfirmation(true)">belum</button>
+      <button onclick="handleExConfirmation(false)">sudah</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
 
-  <div class="container" id="mainContainer" style="display: none;">
+   <div class="container" id="mainContainer" style="display: none;">
     <h1 id="greeting"></h1>
     <div class="message-box">
       <p>Sebenarnya sudah dari dulu saya suka sama kamu tapi tidak saya publikasikan karena pada saat itu saya tidak tahu cara mendekati perempuan yang saya suka. Karena sekarang saya sedikit tahu caranya berkat kawan dan AI yang telah membantu saya, saya mau ngomong sesuatu sebelum terlambat: <strong>mahukah kamu jadi pacarku?</strong> Maaf jika caraku menembak tidak sebagus orang lain🙏.</p>
@@ -311,11 +316,10 @@
   <!-- Modal lainnya tetap sama -->
   <div class="modal" id="modal1">
     <div class="modal-content">
-      <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong 😉. Kalau bisa klik "informasi" terlebih dahulu sebelum jawab.</p>
+      <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong 😉. Kalau bisa klik <strong>informasi</strong> terlebih dahulu sebelum jawab.</p>
+      <button onclick="showModal('modal5')">informasi</button>
       <button onclick="showModal('modal2')">Ya, saya mau </button>
       <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau </button>
-      <button onclick="redirectWA('sudah-pacar')">Maaf, saya sudah punya pacar </button>
-      <button onclick="showModal('modal5')">informasi</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
@@ -331,7 +335,7 @@
 
   <div class="modal" id="modal5">
     <div class="modal-content">
-      <p>Kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu, membuatmu tidak nyaman, mengirim kamu sticker j*k di WhatsApp. Saya minta maaf sebesar-besarnya dan janji tidak akan mengulangi lagi. Saya harap setelah membaca ini kamu mau memaafkan saya. Satu lagi, misal jika kamu menerima saya mungkin cara ku berpacaran sedikit berbeda dengan orang yang pernah menyukaimu dulu. Karena saya belum ada pengalaman melakukan hal semacam ini sebelumnya, bisa dibilang ini baru pertama kalinya, tapi saya akan melakukan sebisa mungkin.</p>
+      <p>Kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu yang membuatmu tidak nyaman, mengirim kamu sticker jmk pada saat chatingan,dan kesalahan yang lainnya. Saya minta maaf sebesar-besarnya dan janji tidak akan mengulanginya lagi. Saya harap kamu mau memaafkan saya. dan Satu lagi, misal jika kamu menerima saya mungkin cara ku berpacaran sedikit berbeda dengan pacarmu dahulu Karena saya belum ada pengalaman melakukan hal semacam ini sebelumnya, bisa dibilang saya baru pertama kali melakukan hal semacam ini tapi saya akan melakukan sebisa dan sebaik mungkin.</p>
       <button onclick="redirectToEasterEgg()">nothing</button>
     </div>
   </div>
@@ -388,6 +392,7 @@
                 Yah, sayang sekali kamu tidak memenuhi syarat untuk membuka halaman selanjutnya 😔
               </h1>
               <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 5 detik...</p>
+              <p class="note">&copy; A.H 5.1 SDN BHD</p>
             </div>
           </div>
         `;
@@ -398,26 +403,18 @@
           window.close();
         }, 5000);
       } else {
-        // Jika pengguna klik "Tidak" pada modal pertama,
-        // sembunyikan modal pertama dan tampilkan modal pertanyaan kedua
         document.getElementById('confirmationModal').style.display = 'none';
         document.getElementById('exConfirmationModal').style.display = 'flex';
       }
     }
 
-    // Fungsi untuk modal pertanyaan kedua
-    // Parameter: true (Iya) atau false (Tidak)
     function handleExConfirmation(likesEx) {
-      // Sembunyikan modal kedua
+     
       document.getElementById('exConfirmationModal').style.display = 'none';
       if (likesEx) {
-        // Jika pengguna klik "Iya" pada modal kedua,
-        // buka halaman utama (bisa kamu ubah tampilan atau tulisannya nantinya)
         document.getElementById('mainContainer').style.display = 'block';
         document.getElementById('greeting').textContent = `Hai, ${localStorage.getItem('userName')}`;
       } else {
-        // Jika pengguna klik "Tidak" pada modal kedua,
-        // tampilkan halaman exit dengan pesan berbeda (placeholder)
         const exitHTML = `
           <div style="
             display: flex; 
@@ -441,7 +438,9 @@
               <h1 style="color: #5d0e1f; margin-bottom: 1rem;">
                 Maaf, kamu tidak memenuhi syarat untuk melanjutkan ke halaman berikutnya 😔
               </h1>
-              <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 5 detik...</p>
+               <p class="note1">baiklah kalau seperti itu, saya akan berhenti menyukai kamu mulai saat ini sampai kapan pun . have a nice day with that guy</p>
+               <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 10 detik...</p>
+               <p class="note">&copy; A.H 5.1 SDN BHD</p>
             </div>
           </div>
         `;
@@ -450,7 +449,7 @@
         setTimeout(() => {
           window.location.href = "about:blank";
           window.close();
-        }, 5000);
+        }, 10000);
       }
     }
 
@@ -461,7 +460,6 @@
     function redirectWA(answer) {
       const responses = {
         'tidak-mau': 'Tidak, saya tidak mau',
-        'sudah-pacar': 'Maaf saya sudah punya pacar',
         'ya-lanjut': 'Ya, saya mau (ya)',
         'tidak-lanjut': 'Ya, saya mau (tidak)'
       };
