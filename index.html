@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>how to repair a fan </title>
+  <title>cara mengubah rasa sedih menjadi saldo dana,gopay,shopeepay,dll </title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
 
@@ -100,60 +100,63 @@
       border-radius: 50%;
     }
 
-    #nameContainer {
-      background: linear-gradient(145deg, #ffffff 0%, #fff5f7 100%);
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(231, 76, 132, 0.1);
-      padding: 2.5rem;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
+    /* Ganti bagian ini */
+#nameContainer {
+  background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(33, 37, 41, 0.1);
+  padding: 2.5rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  border: 1px solid #dee2e6;
+}
 
-    #nameContainer h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      color: #5d0e1f;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
-    }
+#nameContainer h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #2b2d42;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
 
-    #nameContainer p {
-      color: #7a434d;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
+#nameContainer p {
+  color: #4a4e69;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
 
-    #nameInput {
-      width: 100%;
-      max-width: 300px;
-      padding: 1rem;
-      font-size: 1rem;
-      border: 2px solid #ffe6eb;
-      border-radius: 12px;
-      background: #fff9fa;
-      transition: all 0.3s ease;
-      color: #5d0e1f;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
+#nameInput {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #ced4da;
+  border-radius: 12px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  color: #2b2d42;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
 
-    #nameInput:focus {
-      border-color: #e74c84;
-      box-shadow: 0 0 0 3px rgba(231, 76, 132, 0.2);
-    }
+#nameInput:focus {
+  border-color: #3a86ff;
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+}
 
-    h1 {
-      color: #5d0e1f;
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 2rem;
-      font-size: 2.4rem;
-    }
+/* Ganti warna button di name container saja */
+#nameContainer button {
+  background: linear-gradient(135deg, #3a86ff 0%, #2667ff 100%);
+  box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+}
 
-    .message-box {
+#nameContainer button:hover {
+  box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
+}    .message-box {
       background: #fff9fa;
       border: 2px dashed #e74c84;
       border-radius: 15px;
@@ -275,18 +278,18 @@
   </div>
 
   <div class="container" id="nameContainer">
-    <h1>Selamat Datang</h1>
-    <p>Silakan masukkan nama kamu untuk melanjutkan.</p>
-    <input type="text" id="nameInput" placeholder="Nama Kamu" />
-    <br>
-    <button onclick="setName()">Lanjutkan</button>
-  </div>
+  <h1>Verifikasi Identitas</h1>
+  <p>Silakan masukkan nama lengkap/panggilan Anda untuk membuka akses</p>
+  <input type="text" id="nameInput" placeholder="Masukkan nama Anda" />
+  <br>
+  <button onclick="setName()">Verifikasi</button>
+</div>
 
   <!-- Modal Konfirmasi Standar TikTok -->
   <div class="modal" id="confirmationModal">
     <div class="modal-content">
-      <p>Apakah kamu hidupnya diatur oleh standar tiktok?<br>
-         Klik <strong>Iya</strong> jika ya dan <strong>Tidak</strong>.
+      <p>Apakah kamu hidupnya diatur oleh standar tiktok?(bukan berarti tidak boleh nonton tiktok kamu nonton atau tidak itu terserah kamu)<br>
+         Klik <strong>Iya</strong> jika ya dan <strong>Tidak</strong> jika tidak.
       </p>
       <button onclick="handleConfirmation(true)">Iya</button>
       <button onclick="handleConfirmation(false)">Tidak</button>
@@ -304,7 +307,17 @@
     </div>
   </div>
 
-   <div class="container" id="mainContainer" style="display: none;">
+  <!-- Modal untuk memilih tampilan pesan (tampil lengkap atau langsung ke intinya) -->
+  <div class="modal" id="choiceModal">
+    <div class="modal-content">
+      <p>Pilih tampilan: Apakah kamu ingin melihat teks lengkap atau langsung ke intinya?</p>
+      <button onclick="chooseView('full')">Lengkap</button>
+      <button onclick="chooseView('direct')">Langsung ke intinya</button>
+      <p class="note">&copy; A.H 5.1 SDN BHD</p>
+    </div>
+  </div>
+
+  <div class="container" id="mainContainer" style="display: none;">
     <h1 id="greeting"></h1>
     <div class="message-box">
       <p>Sebenarnya sudah dari dulu saya suka sama kamu tapi tidak saya publikasikan karena pada saat itu saya tidak tahu cara mendekati perempuan yang saya suka. Karena sekarang saya sedikit tahu caranya berkat kawan dan AI yang telah membantu saya, saya mau ngomong sesuatu sebelum terlambat: <strong>mahukah kamu jadi pacarku?</strong> Maaf jika caraku menembak tidak sebagus orang lain🙏.</p>
@@ -317,7 +330,7 @@
   <div class="modal" id="modal1">
     <div class="modal-content">
       <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong 😉. Kalau bisa klik <strong>informasi</strong> terlebih dahulu sebelum jawab.</p>
-      <button onclick="showModal('modal5')">informasi</button>
+      <button onclick="showModal('modal5')">informasi dan klarifikasi</button>
       <button onclick="showModal('modal2')">Ya, saya mau </button>
       <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau </button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
@@ -335,7 +348,7 @@
 
   <div class="modal" id="modal5">
     <div class="modal-content">
-      <p>Kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu yang membuatmu tidak nyaman, mengirim kamu sticker jmk pada saat chatingan,dan kesalahan yang lainnya. Saya minta maaf sebesar-besarnya dan janji tidak akan mengulanginya lagi. Saya harap kamu mau memaafkan saya. dan Satu lagi, misal jika kamu menerima saya mungkin cara ku berpacaran sedikit berbeda dengan pacarmu dahulu Karena saya belum ada pengalaman melakukan hal semacam ini sebelumnya, bisa dibilang saya baru pertama kali melakukan hal semacam ini tapi saya akan melakukan sebisa dan sebaik mungkin.</p>
+      <p>Kesalahan yang sebelumnya pernah saya buat seperti berkata dan berperilaku kasar kepada kamu yang membuatmu tidak nyaman, mengirim kamu sticker jmk pada saat chatingan,dan kesalahan yang lainnya. Saya minta maaf sebesar-besarnya dan janji tidak akan mengulanginya lagi.berdasarkan laporan dari warga sekitar kalau kamu pernah takut dengan saya,saya tidak tau kamu takut karena apa karena laporan nya kurang jelas,kenapa harus takut,saya tidak akan pernah main tangan/melakukan kekerasan ke perempuan apa lagi ke perempuan yang saya sukai(mana tega saya memukul perempuan secantik kamu😁). Saya harap kamu mau memaafkan saya . dan Satu lagi, misal jika kamu menerima saya mungkin cara ku berpacaran sedikit berbeda dengan pacarmu dahulu Karena saya belum ada pengalaman melakukan hal semacam ini sebelumnya, bisa dibilang saya baru pertama kali melakukan hal semacam ini tapi saya akan melakukan sebisa dan sebaik mungkin. sebenarnya web ini mau saya kirim kekamu sejak akhir November 2024 karena saya belum punya nyali jadi saya tunda hingga akhirnya kekirim juga kekamu</p>
       <button onclick="redirectToEasterEgg()">nothing</button>
     </div>
   </div>
@@ -349,7 +362,7 @@
     function redirectToEasterEgg() {
       window.open('https://ah51sdnbhd.github.io/project-x2391/', '_blank');
     }
-    
+
     window.onload = function() {
       localStorage.removeItem('userName');
     };
@@ -396,7 +409,7 @@
             </div>
           </div>
         `;
-        
+
         document.body.innerHTML = exitHTML;
         setTimeout(() => {
           window.location.href = "about:blank";
@@ -408,12 +421,13 @@
       }
     }
 
+    // Fungsi untuk modal pertanyaan "Apakah sekarang kamu sudah punya pacar?"
+    // Jika parameter likesEx true berarti pengguna memilih "belum"
     function handleExConfirmation(likesEx) {
-     
       document.getElementById('exConfirmationModal').style.display = 'none';
       if (likesEx) {
-        document.getElementById('mainContainer').style.display = 'block';
-        document.getElementById('greeting').textContent = `Hai, ${localStorage.getItem('userName')}`;
+        // Tampilkan modal pilihan untuk tampilan pesan
+        document.getElementById('choiceModal').style.display = 'flex';
       } else {
         const exitHTML = `
           <div style="
@@ -438,19 +452,30 @@
               <h1 style="color: #5d0e1f; margin-bottom: 1rem;">
                 Maaf, kamu tidak memenuhi syarat untuk melanjutkan ke halaman berikutnya 😔
               </h1>
-               <p class="note1">baiklah kalau seperti itu, saya akan berhenti menyukai kamu mulai saat ini sampai kapan pun . have a nice day with that guy.see you again</p>
+               <p class="note1">baiklah kalau seperti itu, saya akan berhenti menyukai kamu mulai saat ini sampai kapan pun. Have a nice day with that guy. terimakasih sudah berkunjung sampai jumpa lagi.</p>
                <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 15 detik...</p>
                <p class="note">&copy; A.H 5.1 SDN BHD</p>
             </div>
           </div>
         `;
-        
+
         document.body.innerHTML = exitHTML;
         setTimeout(() => {
           window.location.href = "about:blank";
           window.close();
         }, 15000);
       }
+    }
+
+    // Fungsi untuk memilih tampilan pesan (full atau direct)
+    function chooseView(viewType) {
+      document.getElementById('choiceModal').style.display = 'none';
+      // Jika langsung ke intinya, update pesan di dalam .message-box
+      if(viewType === 'direct'){
+        document.querySelector('#mainContainer .message-box').innerHTML = `<p style="font-size:1.2rem;"><strong>Mahukah kamu jadi pacarku?</strong></p>`;
+      }
+      document.getElementById('mainContainer').style.display = 'block';
+      document.getElementById('greeting').textContent = `Hai, ${localStorage.getItem('userName')}`;
     }
 
     function showModal(modalId) {
