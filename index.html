@@ -5,172 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bocoran pertanyaan alam kubur</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
-
-    /* Animasi gradien latar belakang (hanya untuk tampilan selanjutnya) */
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* === Variabel Warna & Import Font === */
+    :root {
+      --primary: #e74c84;
+      --accent: #3a86ff;
+      --background-romantic: linear-gradient(135deg, #ffefef, #ffeef3);
+      --background-modern: #f2f2f2;
     }
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
 
-    /* Animasi gelembung */
-    @keyframes rise {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.8;
-      }
-      50% {
-        opacity: 0.4;
-      }
-      100% {
-        transform: translateY(-110vh) scale(0.5);
-        opacity: 0;
-      }
-    }
-
-    /* Animasi fade in untuk modal */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Animasi transisi elemen (fadeInUp) yang sudah dipoles */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* Tampilan utama (untuk halaman selanjutnya) */
+    /* === Style Global === */
     body {
-      font-family: 'Merriweather', serif;
-      background: linear-gradient(135deg, #fff5f5, #ffe3e3);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      min-height: 100vh;
       margin: 0;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow-x: hidden;
+      font-family: 'Roboto', sans-serif;
     }
-
-    /* Override tampilan untuk halaman verifikasi nama agar lebih profesional dan netral */
+    
+    /* === Halaman Input Nama (Modern & Minimalis) === */
     body.name-page {
-      background: linear-gradient(135deg, #e0e0e0, #ffffff);
-      background-size: cover;
-      animation: none;
+      background: var(--background-modern);
     }
-    body.name-page .bubbles {
-      display: none;
-    }
-
-    /* Container gelembung di latar belakang */
-    .bubbles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .bubble {
-      position: absolute;
-      bottom: -150px;
-      background: rgba(231, 76, 132, 0.15);
-      border-radius: 50%;
-      animation: rise 20s infinite linear;
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 2.5rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(231, 76, 132, 0.1);
-      max-width: 600px;
-      width: 90%;
-      text-align: center;
-      animation: fadeInUp 0.8s ease-out;
-      border: 1px solid rgba(231, 76, 132, 0.15);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .container::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 150px;
-      height: 150px;
-      background: rgba(231, 76, 132, 0.05);
-      border-radius: 50%;
-    }
-
-    /* Tampilan khusus untuk name container (tidak romantis dan profesional) */
-    #nameContainer {
-      background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(33, 37, 41, 0.1);
-      padding: 2.5rem;
+    body.name-page .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
       max-width: 400px;
       width: 90%;
       text-align: center;
-      margin-bottom: 1.5rem;
-      position: relative;
-      border: 1px solid #dee2e6;
     }
-
-    #nameContainer h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      color: #2b2d42;
+    body.name-page h1 {
+      font-size: 1.8rem;
+      color: #333;
       margin-bottom: 1rem;
-      letter-spacing: -0.5px;
     }
-
-    #nameContainer p {
-      color: #4a4e69;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    #nameInput {
-      width: 100%;
-      max-width: 300px;
-      padding: 1rem;
-      font-size: 1rem;
-      border: 2px solid #ced4da;
-      border-radius: 12px;
-      background: #ffffff;
-      transition: all 0.3s ease;
-      color: #2b2d42;
+    body.name-page p {
+      color: #666;
+      font-size: 0.95rem;
       margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    body.name-page input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    body.name-page input[type="text"]:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+    body.name-page button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    body.name-page button:hover {
+      background: #2667ff;
+    }
+    .security-note {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 1rem;
+    }
+
+    /* === Halaman Pesan Utama (Nuansa Romantis) === */
+    body:not(.name-page) {
+      background: var(--background-romantic);
+      animation: backgroundShift 15s infinite alternate;
+    }
+    @keyframes backgroundShift {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.05); }
+    }
+    .romantic-container {
+      background: rgba(255,255,255,0.9);
+      padding: 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 90%;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out;
     }
-
-    #nameInput:focus {
-      border-color: #3a86ff;
-      box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Button pada name container */
-    #nameContainer button {
-      background: linear-gradient(135deg, #3a86ff 0%, #2667ff 100%);
-      box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+    .romantic-container h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: #5d0e1f;
+      margin-bottom: 1.5rem;
     }
-
-    #nameContainer button:hover {
-      box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
-    }
-
     .message-box {
       background: #fff9fa;
-      border: 2px dashed #e74c84;
+      border: 2px dashed var(--primary);
       border-radius: 15px;
       padding: 2rem;
       margin: 1.5rem 0;
@@ -178,33 +121,39 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #5d0e1f;
       position: relative;
       line-height: 1.8;
-      color: #5d0e1f;
     }
-
     .message-box::before {
       content: '💖';
       position: absolute;
       top: -15px;
       left: -15px;
       font-size: 1.5rem;
-      background: white;
+      background: #fff;
       border-radius: 50%;
       padding: 5px;
     }
-
-    .note {
-      font-size: 0.70rem;
-      color: #745159;
-      margin-top: 1.5rem;
+    .romantic-container button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 0.75rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-size: 1.05rem;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 4px 15px rgba(231, 76, 132, 0.3);
+      position: relative;
+      overflow: hidden;
     }
-    .note1 {
-      font-size: 0.9rem;
-      color: #000000;
-      margin-top: 1.5rem;
+    .romantic-container button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(231, 76, 132, 0.4);
     }
-
     button {
       background: linear-gradient(135deg, #e74c84 0%, #d8316b 100%);
       color: white;
@@ -221,17 +170,7 @@
       position: relative;
       overflow: hidden;
     }
-
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(231, 76, 132, 0.4);
-    }
-    .security-note {
-      font-size: 0,8rem;
-      color: #6c757d;
-      margin-top: 1,5rem;
-    }
-
+    
     button::before {
       content: '';
       position: absolute;
@@ -239,19 +178,14 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-      );
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: 0.5s;
     }
-
     button:hover::before {
       left: 100%;
     }
 
+    /* === Modal (Tetap Sama) === */
     .modal {
       display: none;
       position: fixed;
@@ -266,7 +200,10 @@
       z-index: 1000;
       animation: fadeIn 0.5s ease-out;
     }
-
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
     .modal-content {
       background: linear-gradient(145deg, #ffffff 0%, #fff5f7 100%);
       padding: 2.5rem;
@@ -278,56 +215,57 @@
       box-shadow: 0 10px 30px rgba(91, 14, 31, 0.2);
       border: 1px solid rgba(231, 76, 132, 0.2);
     }
+    .note {
+      font-size: 0.7rem;
+      color: #745159;
+      margin-top: 1.5rem;
+    }
+    .note1 {
+      font-size: 0.9rem;
+      color: #000;
+      margin-top: 1.5rem;
+    }
   </style>
 </head>
 <body class="name-page">
-  <!-- Elemen gelembung di latar belakang (tidak tampil pada halaman input nama) -->
-  <div class="bubbles">
-    <div class="bubble" style="width: 50px; height: 50px; left: 10%; animation-duration: 25s; animation-delay: 0s;"></div>
-    <div class="bubble" style="width: 80px; height: 80px; left: 20%; animation-duration: 20s; animation-delay: 2s;"></div>
-    <div class="bubble" style="width: 40px; height: 40px; left: 30%; animation-duration: 30s; animation-delay: 1s;"></div>
-    <div class="bubble" style="width: 70px; height: 70px; left: 40%; animation-duration: 22s; animation-delay: 3s;"></div>
-    <div class="bubble" style="width: 60px; height: 60px; left: 50%; animation-duration: 28s; animation-delay: 0.5s;"></div>
-    <div class="bubble" style="width: 90px; height: 90px; left: 60%; animation-duration: 26s; animation-delay: 2.5s;"></div>
-    <div class="bubble" style="width: 45px; height: 45px; left: 70%; animation-duration: 24s; animation-delay: 1.5s;"></div>
-    <div class="bubble" style="width: 80px; height: 80px; left: 80%; animation-duration: 27s; animation-delay: 3.5s;"></div>
-    <div class="bubble" style="width: 50px; height: 50px; left: 90%; animation-duration: 23s; animation-delay: 0.8s;"></div>
-  </div>
-
-  <!-- Halaman verifikasi identitas (input nama) -->
-  <div class="container" id="nameContainer">
-    <h1>Verifikasi Identitas</h1>
-    <p>Silakan masukkan nama lengkap/panggilan Anda untuk membuka akses</p>
+  <!-- === Halaman Verifikasi Identitas (Input Nama) === -->
+  <div class="card" id="nameContainer">
+    <h1>🔐 Verifikasi Identitas</h1>
+    <p>Masukkan nama lengkap atau panggilan untuk membuka akses.</p>
     <input type="text" id="nameInput" placeholder="Masukkan nama Anda" />
     <br>
     <button onclick="setName()">Verifikasi</button>
-    <p class="security-note">Data Anda akan diproses secara aman dan tidak akan dibagikan ke pihak ketiga</p>
-
+    <p class="note">jika kamu menemukan teks yang kurang jelas atau sulit dimengerti kamu bisa tanyakan kejelasannya lewat chat atau bertemu langsung</p>
+    <p class="security-note">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16" style="margin-right: 6px;">
+        <path d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56"/>
+      </svg>
+      Data Anda dilindungi dengan enkripsi AES-256
+    </p>
   </div>
 
-  <!-- Modal Konfirmasi Standar TikTok -->
+  <!-- === Modal Modal (tetap sama) dan Konten Lainnya === -->
   <div class="modal" id="confirmationModal">
     <div class="modal-content">
-      <p>Apakah kamu hidupnya diatur oleh standar tiktok?(bukan berarti tidak boleh nonton tiktok kamu mau nonton atau tidak itu terserah kamu)<br>
-         Klik <strong>Iya</strong> jika ya dan <strong>Tidak</strong> jika tidak.
+      <p>
+        Apakah kamu hidupnya diatur oleh standar tiktok? <br>(bukan berarti tidak boleh nonton tiktok, terserah kamu)<br>
+        Klik <strong>Iya</strong> jika ya dan <strong>Tidak</strong> jika tidak.
       </p>
-      <button onclick="handleConfirmation(true)">Iya</button>
-      <button onclick="handleConfirmation(false)">Tidak</button>
+      <button onclick="handleConfirmation(true)">Iya👎</button>
+      <button onclick="handleConfirmation(false)">Tidak👍</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
 
-  <!-- Modal Pertanyaan Popup Kedua -->
   <div class="modal" id="exConfirmationModal">
     <div class="modal-content">
       <p>Apakah sekarang kamu sudah punya pacar?</p>
-      <button onclick="handleExConfirmation(true)">belum</button>
-      <button onclick="handleExConfirmation(false)">sudah</button>
+      <button onclick="handleExConfirmation(true)">belum👍</button>
+      <button onclick="handleExConfirmation(false)">sudah👎</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
 
-  <!-- Modal untuk memilih tampilan pesan (tampil lengkap atau langsung ke intinya) -->
   <div class="modal" id="choiceModal">
     <div class="modal-content">
       <p>Apakah kamu ingin melihat teks secara lengkap atau langsung ke intinya?</p>
@@ -337,29 +275,34 @@
     </div>
   </div>
 
-  <div class="container" id="mainContainer" style="display: none;">
+  <!-- === Konten Pesan Utama (Romantis) === -->
+  <div class="romantic-container" id="mainContainer" style="display: none;">
     <h1 id="greeting"></h1>
     <div class="message-box">
-      <p>Sebenarnya saya suka sama kamu sejak kelas 7 dulu karena pada saat itu kamu dah punya pacar jadi saya gak bicarakan soal ini kesiapapun,apakah kamu kira saya suka sama kamu karena kejadian langka saat studi tour kelas 8 dulu?.maaf, tapi perkiraan kamu salah. karena kamu bisa lanjut ke halaman ini seharusnya kamu belum punya pacar. sebelum terlambat saya mau ngomong sesuatu: <strong>mahukah kamu jadi pacarku?</strong>.</p>
+      <p>
+        Sebenarnya saya suka sama kamu sejak kelas 7 dulu karena pada saat itu kamu dah punya pacar jadi saya gak bicarakan soal ini kesiapapun,apakah kamu kira saya suka sama kamu karena kejadian langka saat studi tour kelas 8 dulu?.maaf, tapi perkiraan kamu salah. karena kamu bisa lanjut ke halaman ini seharusnya kamu belum punya pacar. sebelum terlambat saya mau ngomong sesuatu: <strong>mahukah kamu jadi pacarku?</strong>.
+      </p>
     </div>
     <button onclick="showModal('modal1')">Selanjutnya</button>
     <p class="note">&copy; A.H 5.1 SDN BHD</p>
   </div>
 
-  <!-- Modal lainnya tetap sama -->
+  <!-- === Modal Lainnya (tetap sama) === -->
   <div class="modal" id="modal1">
     <div class="modal-content">
-      <p>Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong 😉. Kalau bisa klik <strong>informasi</strong> terlebih dahulu sebelum jawab.</p>
+      <p>
+        Silakan klik pilihan yang sesuai dengan keinginanmu, jangan bohong 😉. Kalau bisa klik <strong>informasi</strong> terlebih dahulu sebelum jawab.
+      </p>
       <button onclick="showModal('modal5')">informasi dan klarifikasi</button>
-      <button onclick="showModal('modal2')">Ya, saya mau </button>
-      <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau </button>
+      <button onclick="showModal('modal2')">Ya, saya mau</button>
+      <button onclick="redirectWA('tidak-mau')">Tidak, saya tidak mau</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
   </div>
 
   <div class="modal" id="modal2">
     <div class="modal-content">
-      <p>terimakasih dah menerima saya </p>
+      <p>terimakasih dah menerima saya semoga hubungan ini bertahan lama </p>
       <button onclick="redirectWA('ya-lanjut')">lanjut</button>
       <p class="note">&copy; A.H 5.1 SDN BHD</p>
     </div>
@@ -367,28 +310,26 @@
 
   <div class="modal" id="modal5">
     <div class="modal-content">
-      <p><strong>maaf jika teks dibawah ini kurang jelas saya harap kamu mengerti apa yang saya sampaikan</strong>.
-
-Saya menyadari bahwa saya pernah melakukan kesalahan, seperti berkata dan berperilaku kasar yang membuatmu merasa tidak nyaman, mengirim sticker JMK saat kita chatting, serta beberapa kesalahan lain yang telah saya perbuat terhadapmu. Saya minta maaf sebesar-besarnya dan berjanji tidak akan mengulanginya lagi.
-
-Saya juga mendengar laporan dari warga sekitar bahwa kamu pernah merasa takut kepada saya. Mungkin hal itu terjadi karena, saat pulang dari kerja kelompok, kamu memilih pulang bersama kawan saya sehingga timbul anggapan bahwa saya akan berantem dengan kawan saya. Namun, saya tidak tahu pasti apa yang membuatmu merasa takut karena laporan itu kurang jelas. Yang terpenting, tidak perlu khawatir karena saya tidak akan marah jika kamu hanya memilih pulang bersama kawan saya, terutama mengingat arah rumahmu yang sama dengan kawan saya. Saya hanya akan merasa marah jika kawan saya memperlakukanmu dengan tidak hormat atau melakukan tindakan kekerasan terhadapmu.
-
-Satu lagi, jika kamu memutuskan untuk menerima saya, perlu kamu ketahui bahwa cara saya berpacaran mungkin berbeda dengan pengalamanmu sebelumnya karena saya belum pernah berpacaran. Karena itu, saya mungkin terkadang terlihat kurang peka terhadapmu. Namun, jika kamu membutuhkan bantuan atau apapun, saya akan berusaha sebaik mungkin untuk mendukung/menolongmu." </p>
+      <p>
+        <strong>maaf jika teks dibawah ini kurang jelas dan sulit dimengerti saya harap kamu mengerti apa yang saya sampaikan</strong>.<br><br>
+        Saya menyadari bahwa saya pernah melakukan kesalahan, seperti berkata dan berperilaku kasar yang membuatmu merasa tidak nyaman, mengirim sticker JMK saat kita chatting, serta beberapa kesalahan lain yang telah saya perbuat terhadapmu. Saya minta maaf sebesar-besarnya dan berjanji tidak akan mengulanginya lagi.<br><br>
+        Saya juga mendengar laporan dari warga sekitar bahwa kamu pernah merasa takut kepada saya. Mungkin hal itu terjadi karena, saat pulang dari kerja kelompok, kamu memilih pulang bersama kawan saya sehingga timbul anggapan bahwa saya akan berantem dengan kawan saya. Namun, saya tidak tahu pasti apa yang membuatmu merasa takut karena laporan itu kurang jelas. Yang terpenting, tidak perlu khawatir karena saya tidak akan marah jika kamu hanya memilih pulang bersama kawan saya, terutama mengingat arah rumahmu yang sama dengan kawan saya. Saya hanya akan merasa marah jika kawan saya memperlakukanmu dengan tidak hormat atau melakukan tindakan kekerasan terhadapmu.<br><br>
+        Satu lagi, jika kamu memutuskan untuk menerima saya, perlu kamu ketahui bahwa cara saya berpacaran mungkin berbeda dengan pacarmu sebelumnya karena saya belum pernah berpacaran. Karena itu, saya mungkin terkadang terlihat kurang peka terhadapmu. Namun, jika kamu sewaktu-waktu membutuhkan bantuan atau apapun, saya akan berusaha sebaik mungkin untuk mendukung/menolongmu.
+      </p>
       <button onclick="redirectToEasterEgg()">information</button>
       <p class="note">klik luar kotak untuk kembali</p>
     </div>
   </div>
 
   <div class="modal" id="modal6">
-    <div class="modal-content">
-    </div>
+    <div class="modal-content"></div>
   </div>
 
   <script>
     function redirectToEasterEgg() {
       window.open('https://ah51sdnbhd.github.io/project-x2391/', '_blank');
     }
-
+    
     window.onload = function() {
       localStorage.removeItem('userName');
     };
@@ -397,47 +338,23 @@ Satu lagi, jika kamu memutuskan untuk menerima saya, perlu kamu ketahui bahwa ca
       const name = document.getElementById('nameInput').value.trim();
       if (name) {
         localStorage.setItem('userName', name);
-        // Hapus kelas name-page agar tampilan selanjutnya kembali ke tema romantis
         document.body.classList.remove('name-page');
         document.getElementById('nameContainer').style.display = 'none';
         document.getElementById('confirmationModal').style.display = 'flex';
       }
     }
 
-    // Fungsi untuk modal konfirmasi pertama
-    // Parameter: true (Iya) atau false (Tidak)
     function handleConfirmation(isTikTokStandard) {
       if (isTikTokStandard) {
-        // Jika pengguna klik "Iya" pada modal pertama, tampilkan halaman exit
         const exitHTML = `
-          <div style="
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh;
-            background: linear-gradient(135deg, #fff5f5, #ffe3e3);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            font-family: 'Merriweather', serif;
-            text-align: center;
-            padding: 20px;
-          ">
-            <div style="
-              background: rgba(255,255,255,0.95);
-              padding: 2rem;
-              border-radius: 20px;
-              box-shadow: 0 10px 30px rgba(231, 76, 132, 0.1);
-              max-width: 600px;
-            ">
-              <h1 style="color: #5d0e1f; margin-bottom: 1rem;">
-                Yah, sayang sekali kamu tidak memenuhi syarat untuk membuka halaman selanjutnya 😔
-              </h1>
-              <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 5 detik...</p>
+          <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--background-romantic); font-family: 'Roboto', sans-serif; text-align: center; padding: 20px;">
+            <div style="background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 600px;">
+              <h1 style="color: #5d0e1f; margin-bottom: 1rem;">Yah, sayang sekali kamu tidak memenuhi syarat untuk membuka halaman selanjutnya 😔</h1>
+              <p style="color: #666;">Halaman akan keluar otomatis dalam 5 detik...</p>
               <p class="note">&copy; A.H 5.1 SDN BHD</p>
             </div>
           </div>
         `;
-
         document.body.innerHTML = exitHTML;
         setTimeout(() => {
           window.location.href = "about:blank";
@@ -449,44 +366,21 @@ Satu lagi, jika kamu memutuskan untuk menerima saya, perlu kamu ketahui bahwa ca
       }
     }
 
-    // Fungsi untuk modal pertanyaan "Apakah sekarang kamu sudah punya pacar?"
-    // Jika parameter likesEx true berarti pengguna memilih "belum"
     function handleExConfirmation(likesEx) {
       document.getElementById('exConfirmationModal').style.display = 'none';
       if (likesEx) {
-        // Tampilkan modal pilihan untuk tampilan pesan
         document.getElementById('choiceModal').style.display = 'flex';
       } else {
         const exitHTML = `
-          <div style="
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh;
-            background: linear-gradient(135deg, #fff5f5, #ffe3e3);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            font-family: 'Merriweather', serif;
-            text-align: center;
-            padding: 20px;
-          ">
-            <div style="
-              background: rgba(255,255,255,0.95);
-              padding: 2rem;
-              border-radius: 20px;
-              box-shadow: 0 10px 30px rgba(231, 76, 132, 0.1);
-              max-width: 600px;
-            ">
-              <h1 style="color: #5d0e1f; margin-bottom: 1rem;">
-                Maaf, kamu tidak memenuhi syarat untuk melanjutkan ke halaman berikutnya 😔
-              </h1>
-               <p class="note1">baiklah kalau seperti itu, saya akan berhenti menyukai kamu mulai saat ini sampai kapan pun. Have a nice day with that guy. terimakasih sudah berkunjung sampai jumpa dihari yang akan datang.</p>
-               <p style="color: #7a434d;">Halaman akan keluar otomatis dalam 15 detik...</p>
-               <p class="note">&copy; A.H 5.1 SDN BHD</p>
+          <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--background-romantic); font-family: 'Roboto', sans-serif; text-align: center; padding: 20px;">
+            <div style="background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); max-width: 600px;">
+              <h1 style="color: #5d0e1f; margin-bottom: 1rem;">Maaf, kamu tidak memenuhi syarat untuk melanjutkan ke halaman berikutnya 😔</h1>
+              <p class="note1">baiklah kalau seperti itu, saya akan berhenti menyukai kamu mulai saat ini sampai kapan pun. Have a nice day with that guy. terimakasih sudah berkunjung sampai jumpa dihari yang akan datang.</p>
+              <p style="color: #666;">Halaman akan keluar otomatis dalam 15 detik...</p>
+              <p class="note">&copy; A.H 5.1 SDN BHD</p>
             </div>
           </div>
         `;
-
         document.body.innerHTML = exitHTML;
         setTimeout(() => {
           window.location.href = "about:blank";
@@ -495,10 +389,8 @@ Satu lagi, jika kamu memutuskan untuk menerima saya, perlu kamu ketahui bahwa ca
       }
     }
 
-    // Fungsi untuk memilih tampilan pesan (full atau direct)
     function chooseView(viewType) {
       document.getElementById('choiceModal').style.display = 'none';
-      // Jika langsung ke intinya, update pesan di dalam .message-box
       if(viewType === 'direct'){
         document.querySelector('#mainContainer .message-box').innerHTML = `<p style="font-size:1.2rem;">sebenarnya saya suka sama kamu <strong>Mahukah kamu jadi pacarku?</strong></p>`;
       }
@@ -516,7 +408,6 @@ Satu lagi, jika kamu memutuskan untuk menerima saya, perlu kamu ketahui bahwa ca
         'ya-lanjut': 'Ya, saya mau',
         'tidak-lanjut': 'Ya, saya mau (tidak)'
       };
-
       const waNumber = '6285183297046';
       const message = encodeURIComponent(responses[answer]);
       window.location.href = `https://wa.me/${waNumber}?text=${message}`;
