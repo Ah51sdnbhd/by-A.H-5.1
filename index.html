@@ -1,90 +1,415 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>terimakasih dah buka link ni</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f3f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-        }
-
-        h1 {
-            color: #2c3e50;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .separator {
-            width: 50px;
-            height: 1px;
-            background-color: #bdc3c7;
-            margin: 1.5rem auto;
-        }
-
-        p {
-            color: #7f8c8d;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .signature {
-            margin-top: 2rem;
-            color: #34495e;
-            font-style: italic;
-            font-weight: 300;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card {
-            animation: fadeIn 0.8s ease-out;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan Instalasi Windows 10 & Windows 11 - Detail</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Variabel Tema */
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --accent-color: #0078d7;
+      --accent-color-hover: #005a9c;
+      --border-color: #e0e0e0;
+      --card-bg: #fff;
+      --header-bg: linear-gradient(135deg, #0078d7, #00a4ef);
+    }
+    .dark-theme {
+      --bg-color: #1e1e1e;
+      --text-color: #e0e0e0;
+      --accent-color: #0a84ff;
+      --accent-color-hover: #0a6cd1;
+      --border-color: #444;
+      --card-bg: #292929;
+    }
+    /* Reset dan Global Style */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* Header */
+    header {
+      background: var(--header-bg);
+      padding: 30px 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin: 5px 0;
+    }
+    nav button {
+      padding: 10px 15px;
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    nav button:hover {
+      background-color: var(--accent-color-hover);
+      transform: translateY(-2px);
+    }
+    /* Content */
+    #content p {
+      line-height: 1.6;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .section h2 {
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    .step {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+    .step:hover {
+      transform: translateX(5px);
+    }
+    .step h3 {
+      margin-top: 0;
+      color: var(--accent-color);
+    }
+    /* Spesifikasi */
+    .specs {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .specs h2 {
+      border-bottom: none;
+    }
+    .specs h3 {
+      margin-bottom: 5px;
+      color: var(--accent-color);
+    }
+    .specs p {
+      margin: 5px 0;
+      line-height: 1.6;
+    }
+    /* Footer Penanda */
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      border-top: 1px solid var(--border-color);
+      margin-top: 20px;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <h1>terimakasih</h1>
-        <div class="separator"></div>
-        
-        <p>
-            Terima kasih telah menyempatkan waktu untuk merespons perasaan saya. 
-            Saya menghargai kejujuran dan keterbukaan yang kamu berikan.
-        </p>
+  <div class="container">
+    <header>
+      <h1 id="title">Panduan Instalasi Windows 10 & Windows 11 - Detail</h1>
+    </header>
+    <nav>
+      <div class="nav-buttons">
+        <button onclick="setLanguage('id')">Indonesia</button>
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('ms')">Melayu</button>
+        <button onclick="window.location.href='https://ah51sdnbhd.github.io/project-x2391/'">About Me</button>
+      </div>
+      <div class="nav-buttons">
+        <button onclick="toggleTheme()">Theme</button>
+      </div>
+    </nav>
+    <section id="content">
+      <!-- Konten panduan akan ditampilkan di sini -->
+    </section>
+    <footer>
+      <p>©A.H 5.1 x ChatGPT</p>
+    </footer>
+  </div>
 
-        <p>
-            Meskipun mungkin ini bukan hasil yang saya harapkan, saya tetap senang
-            bisa menyampaikan isi hati saya. 
-        </p>
+  <script>
+    const contentData = {
+      id: {
+        title: "Panduan Instalasi Windows 10 & Windows 11 - Detail",
+        intro: "Panduan lengkap ini memberikan langkah demi langkah instalasi Windows 10 & Windows 11 mulai dari persiapan awal, pembuatan USB bootable menggunakan Rufus, pengaturan BIOS/UEFI, hingga instalasi Windows. Pastikan Anda telah menyiapkan semua keperluan sebelum memulai.",
+        sections: [
+          {
+            heading: "1. Persiapan Awal",
+            steps: [
+              "Pastikan komputer Anda memenuhi spesifikasi minimal dan lakukan backup data penting sebelum instalasi.",
+              "Download file ISO Windows 10 atau Windows 11 dari situs resmi Microsoft.",
+              "Download aplikasi Rufus dari rufus.ie.",
+              "Siapkan USB flash drive minimal 8GB (disarankan 16GB) dan pastikan data di dalamnya sudah dibackup karena akan diformat."
+            ]
+          },
+          {
+            heading: "2. Membuat USB Bootable dengan Rufus",
+            steps: [
+              "Sambungkan USB flash drive ke komputer.",
+              "Buka aplikasi Rufus yang telah diunduh.",
+              "Di bagian 'Device', pilih USB drive yang sudah terhubung.",
+              "Klik tombol 'SELECT' dan pilih file ISO Windows yang telah Anda download.",
+              "Atur 'Partition scheme' sesuai dengan sistem Anda: pilih MBR untuk sistem BIOS atau GPT untuk sistem UEFI.",
+              "Pastikan 'File system' disetel ke NTFS (jika ISO berukuran besar) atau FAT32.",
+              "Klik 'START' untuk memulai proses pembuatan bootable USB. Tunggu hingga proses selesai."
+            ]
+          },
+          {
+            heading: "3. Mengatur Boot Priority di BIOS/UEFI",
+            steps: [
+              "Restart komputer dan masuk ke BIOS/UEFI dengan menekan tombol yang sesuai (misalnya F2, DEL, atau ESC) segera setelah komputer menyala.",
+              "Cari menu 'Boot' atau 'Boot Order' dalam BIOS/UEFI.",
+              "Ubah urutan boot sehingga USB drive ditempatkan di posisi pertama.",
+              "Simpan perubahan dan keluar dari BIOS/UEFI. Komputer akan restart secara otomatis."
+            ]
+          },
+          {
+            heading: "4. Instalasi Windows",
+            steps: [
+              "Setelah booting dari USB, layar instalasi Windows akan muncul.",
+              "Pilih bahasa, waktu, dan format keyboard, kemudian klik 'Next'.",
+              "Klik 'Install now' untuk memulai instalasi.",
+              "Jika diminta, masukkan product key atau pilih opsi 'I don't have a product key' untuk instalasi sementara.",
+              "Pilih edisi Windows yang sesuai dengan lisensi Anda dan klik 'Next'.",
+              "Setujui syarat dan ketentuan, lalu klik 'Next'.",
+              "Pilih jenis instalasi 'Custom' untuk instalasi baru.",
+              "Pilih partisi di mana Windows akan diinstal. Jika perlu, gunakan opsi format atau buat partisi baru sesuai kebutuhan.",
+              "Tunggu hingga proses instalasi selesai. Komputer mungkin akan restart beberapa kali selama proses ini.",
+              "Setelah instalasi, lakukan pengaturan awal seperti pembuatan akun pengguna, pengaturan privasi, dan konfigurasi dasar untuk mencapai tampilan log masuk Windows."
+            ]
+          },
+          {
+            heading: "5. Instalasi Windows 11 pada Hardware Tidak Didukung",
+            steps: [
+              "Catatan: Windows 11 secara resmi membutuhkan CPU, motherboard dengan dukungan UEFI, dan TPM 2.0. Menginstal Windows 11 pada perangkat yang tidak mendukung persyaratan tersebut dapat mengakibatkan ketidakstabilan sistem dan risiko keamanan. Lanjutkan dengan risiko Anda sendiri.",
+              "Jika perangkat Anda tidak mendukung TPM 2.0 atau UEFI, saat instalasi Windows 11 muncul pesan kesalahan, tekan <strong>Shift+F10</strong> untuk membuka Command Prompt.",
+              "Ketik <code>regedit</code> untuk membuka Registry Editor.",
+              "Navigasikan ke <code>HKEY_LOCAL_MACHINE\SYSTEM\Setup\MoSetup</code>. Jika kunci <code>MoSetup</code> belum ada, buat kunci baru dengan nama tersebut.",
+              "Di dalam kunci <code>MoSetup</code>, buat nilai DWORD baru dengan nama <code>AllowUpgradesWithUnsupportedTPMOrCPU</code> dan set nilainya menjadi <strong>1</strong>.",
+              "Tutup Registry Editor dan Command Prompt, kemudian lanjutkan proses instalasi.",
+              "Jika motherboard tidak mendukung mode UEFI, pastikan BIOS diatur ke mode Legacy. Proses instalasi mungkin memerlukan penyesuaian pada pengaturan partisi."
+            ]
+          }
+        ],
+        specs: {
+          title: "Spesifikasi Minimal dan Disarankan",
+          windows10: {
+            minimal: "Prosesor: 1 GHz, RAM: 1 GB (32-bit) atau 2 GB (64-bit), HDD: 16 GB (32-bit) atau 20 GB (64-bit), DirectX 9.",
+            recommended: "Prosesor: 2+ GHz multi-core, RAM: 4-8 GB, SSD: 120+ GB, GPU kompatibel dengan DirectX 10."
+          },
+          windows11: {
+            minimal: "Prosesor: 1 GHz dual-core, RAM: 4 GB, Penyimpanan: 64 GB, UEFI, Secure Boot, TPM 2.0.",
+            recommended: "Prosesor: 2+ GHz quad-core, RAM: 8+ GB, SSD: 256+ GB, GPU kompatibel dengan DirectX 12."
+          }
+        }
+      },
+      en: {
+        title: "Detailed Guide for Installing Windows 10 & Windows 11",
+        intro: "This comprehensive guide provides step-by-step instructions for installing Windows 10 & Windows 11—from initial preparation and creating a bootable USB with Rufus to configuring BIOS/UEFI and completing the installation. Ensure all prerequisites are ready before starting.",
+        sections: [
+          {
+            heading: "1. Initial Preparation",
+            steps: [
+              "Ensure your computer meets the minimum specifications and back up all important data before installation.",
+              "Download the Windows 10 or Windows 11 ISO from the official Microsoft website.",
+              "Download Rufus from rufus.ie.",
+              "Prepare an empty USB flash drive of at least 8GB (16GB recommended) as it will be formatted during the process."
+            ]
+          },
+          {
+            heading: "2. Creating a Bootable USB with Rufus",
+            steps: [
+              "Connect your USB flash drive to the computer.",
+              "Launch the Rufus application.",
+              "Under the 'Device' section, select your USB drive.",
+              "Click 'SELECT' and choose the downloaded Windows ISO file.",
+              "Set the 'Partition scheme' according to your system: choose MBR for BIOS or GPT for UEFI.",
+              "Ensure the file system is set to NTFS (for larger ISO files) or FAT32.",
+              "Click 'START' to begin creating the bootable USB. Wait until the process completes."
+            ]
+          },
+          {
+            heading: "3. Configuring Boot Priority in BIOS/UEFI",
+            steps: [
+              "Restart your computer and enter the BIOS/UEFI by pressing the appropriate key (e.g., F2, DEL, or ESC) during startup.",
+              "Locate the 'Boot' or 'Boot Order' menu in BIOS/UEFI.",
+              "Set your USB drive as the primary boot device.",
+              "Save your changes and exit BIOS/UEFI; your computer will restart automatically."
+            ]
+          },
+          {
+            heading: "4. Installing Windows",
+            steps: [
+              "Once booted from the USB, the Windows installation screen will appear.",
+              "Select your language, time, and keyboard format, then click 'Next'.",
+              "Click 'Install now' to begin the installation process.",
+              "Enter the product key if prompted, or select 'I don't have a product key' for temporary installation.",
+              "Choose the Windows edition that matches your license and click 'Next'.",
+              "Accept the license terms and click 'Next'.",
+              "Select the 'Custom' installation option for a clean install.",
+              "Choose the partition where Windows will be installed; format or create new partitions if necessary.",
+              "Wait for the installation to complete. Your computer may restart several times during this process.",
+              "Once complete, perform the initial setup—create a user account, set privacy preferences, etc.—to reach the Windows login screen."
+            ]
+          },
+          {
+            heading: "5. Installing Windows 11 on Unsupported Hardware",
+            steps: [
+              "Note: Windows 11 officially requires a supported CPU, UEFI, and TPM 2.0. Installing it on unsupported hardware may lead to system instability and security risks. Proceed at your own risk.",
+              "If your device does not support TPM 2.0 or UEFI, and you encounter an error during setup, press <strong>Shift+F10</strong> to open the Command Prompt.",
+              "Type <code>regedit</code> to open the Registry Editor.",
+              "Navigate to <code>HKEY_LOCAL_MACHINE\SYSTEM\Setup\MoSetup</code>. If the key 'MoSetup' does not exist, create it.",
+              "Within the MoSetup key, create a new DWORD value named <code>AllowUpgradesWithUnsupportedTPMOrCPU</code> and set its value to <strong>1</strong>.",
+              "Close the Registry Editor and Command Prompt, then continue with the installation.",
+              "If your motherboard does not support UEFI, ensure that your BIOS is set to Legacy mode. Partition settings may need to be adjusted accordingly."
+            ]
+          }
+        ],
+        specs: {
+          title: "Minimum and Recommended Specifications",
+          windows10: {
+            minimal: "Processor: 1 GHz, RAM: 1 GB (32-bit) or 2 GB (64-bit), HDD: 16 GB (32-bit) or 20 GB (64-bit), DirectX 9.",
+            recommended: "Processor: 2+ GHz multi-core, RAM: 4-8 GB, SSD: 120+ GB, GPU compatible with DirectX 10."
+          },
+          windows11: {
+            minimal: "Processor: 1 GHz dual-core, RAM: 4 GB, Storage: 64 GB, UEFI, Secure Boot, TPM 2.0.",
+            recommended: "Processor: 2+ GHz quad-core, RAM: 8+ GB, SSD: 256+ GB, GPU compatible with DirectX 12."
+          }
+        }
+      },
+      ms: {
+        title: "Panduan Lengkap Memasang Windows 10 & Windows 11",
+        intro: "Panduan menyeluruh ini menerangkan langkah demi langkah untuk memasang Windows 10 & Windows 11, mulai dari persiapan awal, pembuatan USB bootable dengan Rufus, konfigurasi BIOS/UEFI, hingga proses pemasangan Windows. Pastikan semua keperluan telah disediakan sebelum memulakan.",
+        sections: [
+          {
+            heading: "1. Persiapan Awal",
+            steps: [
+              "Pastikan komputer anda memenuhi spesifikasi minimum dan lakukan backup data penting.",
+              "Muat turun fail ISO Windows 10 atau Windows 11 dari laman rasmi Microsoft.",
+              "Muat turun aplikasi Rufus dari rufus.ie.",
+              "Sediakan pemacu USB kosong dengan kapasiti sekurang-kurangnya 8GB (disyorkan 16GB) kerana pemacu akan diformat."
+            ]
+          },
+          {
+            heading: "2. Membuat USB Bootable dengan Rufus",
+            steps: [
+              "Sambungkan pemacu USB ke komputer.",
+              "Buka aplikasi Rufus yang telah dimuat turun.",
+              "Pilih pemacu USB pada bahagian 'Device'.",
+              "Klik 'SELECT' dan pilih fail ISO Windows yang telah dimuat turun.",
+              "Tetapkan 'Partition scheme' mengikut sistem: pilih MBR untuk BIOS atau GPT untuk UEFI.",
+              "Pastikan 'File system' ditetapkan ke NTFS (jika saiz ISO besar) atau FAT32.",
+              "Klik butang 'START' untuk memulakan pembuatan USB bootable. Tunggu sehingga proses selesai."
+            ]
+          },
+          {
+            heading: "3. Menyusun Boot Priority di BIOS/UEFI",
+            steps: [
+              "Restart komputer dan masuk ke BIOS/UEFI dengan menekan kekunci yang sesuai (contohnya F2, DEL, ESC) semasa boot.",
+              "Cari menu 'Boot' atau 'Boot Order' dan tetapkan USB sebagai peranti boot utama.",
+              "Simpan perubahan dan keluar dari BIOS/UEFI. Komputer akan restart secara automatik."
+            ]
+          },
+          {
+            heading: "4. Memasang Windows",
+            steps: [
+              "Setelah boot dari USB, skrin pemasangan Windows akan muncul.",
+              "Pilih bahasa, masa, dan format papan kekunci, kemudian klik 'Next'.",
+              "Klik 'Install now' untuk memulakan pemasangan.",
+              "Masukkan product key jika diminta atau pilih 'I don't have a product key' untuk pemasangan sementara.",
+              "Pilih edisi Windows yang sesuai dengan lesen anda dan klik 'Next'.",
+              "Setujui terma dan syarat, kemudian klik 'Next'.",
+              "Pilih jenis pemasangan 'Custom' untuk pemasangan baru.",
+              "Pilih partisi di mana Windows akan dipasang. Format atau buat partisi baru jika perlu.",
+              "Tunggu sehingga proses pemasangan selesai; komputer mungkin akan restart beberapa kali.",
+              "Setelah selesai, lakukan pengaturan awal seperti pembuatan akaun pengguna dan tetapan privasi untuk mencapai skrin log masuk Windows."
+            ]
+          },
+          {
+            heading: "5. Memasang Windows 11 pada Hardware Tidak Disokong",
+            steps: [
+              "Nota: Windows 11 secara rasmi memerlukan CPU, motherboard dengan sokongan UEFI, dan TPM 2.0. Memasang Windows 11 pada hardware yang tidak menyokong keperluan tersebut boleh menyebabkan ketidakstabilan sistem dan risiko keselamatan. Sila teruskan dengan risiko anda sendiri.",
+              "Jika peranti anda tidak menyokong TPM 2.0 atau UEFI dan anda menerima mesej ralat semasa pemasangan, tekan <strong>Shift+F10</strong> untuk membuka Command Prompt.",
+              "Taip <code>regedit</code> untuk membuka Registry Editor.",
+              "Navigasi ke <code>HKEY_LOCAL_MACHINE\SYSTEM\Setup\MoSetup</code>. Jika kunci 'MoSetup' belum wujud, buat kunci baru dengan nama tersebut.",
+              "Dalam kunci 'MoSetup', buat nilai DWORD baru bernama <code>AllowUpgradesWithUnsupportedTPMOrCPU</code> dan tetapkan nilainya kepada <strong>1</strong>.",
+              "Tutup Registry Editor dan Command Prompt, kemudian teruskan proses pemasangan.",
+              "Jika motherboard anda tidak menyokong UEFI, pastikan BIOS diset ke mode Legacy. Sesuaikan tetapan partisi jika diperlukan."
+            ]
+          }
+        ],
+        specs: {
+          title: "Spesifikasi Minimum dan Disyorkan",
+          windows10: {
+            minimal: "Pemproses: 1 GHz, RAM: 1 GB (32-bit) atau 2 GB (64-bit), HDD: 16 GB (32-bit) atau 20 GB (64-bit), DirectX 9.",
+            recommended: "Pemproses: 2+ GHz multi-teras, RAM: 4-8 GB, SSD: 120+ GB, GPU yang serasi dengan DirectX 10."
+          },
+          windows11: {
+            minimal: "Pemproses: 1 GHz dual-core, RAM: 4 GB, Penyimpanan: 64 GB, UEFI, Secure Boot, TPM 2.0.",
+            recommended: "Pemproses: 2+ GHz quad-core, RAM: 8+ GB, SSD: 256+ GB, GPU yang serasi dengan DirectX 12."
+          }
+        }
+      }
+    };
 
-        <p>
-            Semoga kita tetap dapat melanjutkan hubungan pertemanan ini seperti biasanya.
-        </p>
-
-        <div class="separator"></div>
-        <p class="signature">Hormat saya,<br>R.G.P. (A.H 5.1 Sdn.Bhd.)</p>
-    </div>
-</body>
-</html>
+    function setLanguage(lang) {
+      const data = contentData[lang];
+      document.getElementById('title').innerText = data.title;
+      let contentHTML = `<p>${data.intro}</p>`;
+      data.sections.forEach(section => {
+        contentHTML += `<div class="section"><h2>${section.heading}</h2>`;
+        section.steps.forEach((step, index) => 
