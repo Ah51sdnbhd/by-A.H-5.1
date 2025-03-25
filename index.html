@@ -9,31 +9,33 @@
   <style>
     /* Variabel Tema */
     :root {
-      --bg-color: #f9f9f9;
+      --bg-color: #f4f7f9;
       --text-color: #333;
-      --accent-color: #0078d7;
-      --accent-color-hover: #005a9c;
-      --border-color: #e0e0e0;
+      --accent-color: #1565c0;
+      --accent-color-hover: #0d47a1;
+      --border-color: #d0d7de;
       --card-bg: #fff;
-      --header-bg: linear-gradient(135deg, #0078d7, #00a4ef);
+      --header-bg: linear-gradient(135deg, #1565c0, #42a5f5);
     }
     .dark-theme {
-      --bg-color: #1e1e1e;
+      --bg-color: #1c1c1c;
       --text-color: #e0e0e0;
-      --accent-color: #0a84ff;
-      --accent-color-hover: #0a6cd1;
+      --accent-color: #4fc3f7;
+      --accent-color-hover: #29b6f6;
       --border-color: #444;
-      --card-bg: #292929;
+      --card-bg: #2a2a2a;
     }
     /* Reset dan Global Style */
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     body {
-      margin: 0;
       font-family: 'Roboto', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
+      line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
     a {
@@ -43,23 +45,23 @@
     /* Container */
     .container {
       max-width: 900px;
-      margin: 0 auto;
+      margin: 30px auto;
       padding: 20px;
     }
     /* Header */
     header {
       background: var(--header-bg);
-      padding: 30px 20px;
-      border-radius: 8px;
+      padding: 40px 20px;
+      border-radius: 10px;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       color: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
     header h1 {
-      margin: 0;
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
     /* Navigation */
     nav {
@@ -67,53 +69,56 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .nav-buttons {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       margin: 5px 0;
     }
     nav button {
-      padding: 10px 15px;
+      padding: 10px 20px;
       background-color: var(--accent-color);
       color: #fff;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
       font-weight: 500;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
     nav button:hover {
       background-color: var(--accent-color-hover);
       transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
-    /* Content */
+    /* Konten */
     #content p {
-      line-height: 1.6;
+      margin-bottom: 15px;
     }
     .section {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
     .section h2 {
       border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 5px;
-      margin-bottom: 15px;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
     }
     .step {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .step:hover {
       transform: translateX(5px);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
     .step h3 {
-      margin-top: 0;
+      margin-bottom: 8px;
       color: var(--accent-color);
     }
     /* Spesifikasi */
@@ -121,29 +126,30 @@
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 20px;
+      padding: 25px;
       margin-bottom: 30px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
     }
     .specs h2 {
-      border-bottom: none;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      color: var(--accent-color);
     }
     .specs h3 {
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       color: var(--accent-color);
     }
     .specs p {
-      margin: 5px 0;
-      line-height: 1.6;
+      margin: 6px 0;
     }
-    /* Footer Penanda */
+    /* Footer */
     footer {
       text-align: center;
       padding: 15px;
       font-size: 0.9rem;
       color: var(--text-color);
       border-top: 1px solid var(--border-color);
-      margin-top: 20px;
+      margin-top: 30px;
     }
     /* Responsive */
     @media (max-width: 600px) {
@@ -412,4 +418,28 @@
       let contentHTML = `<p>${data.intro}</p>`;
       data.sections.forEach(section => {
         contentHTML += `<div class="section"><h2>${section.heading}</h2>`;
-        section.steps.forEach((step, index) => 
+        section.steps.forEach((step, index) => {
+          contentHTML += `<div class="step"><h3>Step ${index + 1}:</h3><p>${step}</p></div>`;
+        });
+        contentHTML += `</div>`;
+      });
+      contentHTML += `<div class="specs"><h2>${data.specs.title}</h2>`;
+      contentHTML += `<h3>Windows 10:</h3>`;
+      contentHTML += `<p><strong>Minimal:</strong> ${data.specs.windows10.minimum}</p>`;
+      contentHTML += `<p><strong>Disyorkan:</strong> ${data.specs.windows10.recommended}</p>`;
+      contentHTML += `<h3>Windows 11:</h3>`;
+      contentHTML += `<p><strong>Minimal:</strong> ${data.specs.windows11.minimum}</p>`;
+      contentHTML += `<p><strong>Disyorkan:</strong> ${data.specs.windows11.recommended}</p>`;
+      contentHTML += `</div>`;
+      document.getElementById('content').innerHTML = contentHTML;
+    }
+
+    // Set bahasa default ke Indonesia
+    setLanguage('en');
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+  </script>
+</body>
+</html>
